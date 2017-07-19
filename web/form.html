@@ -1,0 +1,139 @@
+<html>
+
+  <head>
+   <link href="https://fonts.googleapis.com/css?family=Pattaya" rel="stylesheet">
+   <meta charset="UTF-8">
+    <title>กรอกคะเเนนนักเรียน</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        body {
+            font-family: 'Pattaya', sans-serif;
+            
+        background-color: #00ffd8;
+}
+      h1 {
+          text-align: center;
+          color: #000000;
+          font-size: 2em
+              
+      }
+      
+      input,
+      button {
+        display: block;
+        margin: auto;
+        border-radius: 30px;
+        font-family: 'Pattaya', sans-serif;
+        min-width: 300px;
+        min-height: 36px;
+        border: 1px solid #d9d9d9;
+        box-shadow: 0 1px 3px 0 #6d6d6d, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      
+      label,
+      input,
+      button {
+        text-align: center;
+        display: block;
+      }
+      
+      input {
+        text-align: center;
+        margin-bottom: 1.5em;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1>กรอกคะเเนนนักเรียน</h1>
+    <label for="num1">ชื่อ</label>
+    <input placeholder="เช่น 'สุพจน์'" id="num1">
+    <label for="num2">นามสกุล</label>
+    <input placeholder="เช่น 'เเสงอลังการ'" id="num2">
+    <label for="num3">วิชาเรียน</label>
+    <input placeholder="เช่น 'วิทยาศาสตร์'" id="num3">
+    <label for="num4">คะเเนนเก็บ</label>
+    <input placeholder="ไม่เกิน40คะเเนน" id="num4">
+    <label for="num5">คะเเนนกลางภาค</label>
+    <input placeholder="ไม่เกิน30คะเเนน" id="num5">
+    <label for="num6">คะเเนนปลายภาค</label>
+    <input placeholder="ไม่เกิน30คะเเนน" id="num6">
+    <button>Summit</button>
+    <p></p>
+    <script>
+      function onClick(){
+  if (inputsAreEmpty()) {
+     alert("กรุณากรอกข้อมูลให้ครบ");
+    return;
+  }
+  updateLabel();
+}
+function inputsAreEmpty() {
+  if (getNumber1() === '' || getNumber2() === '' || getNumber3() === '' || getNumber4() === '' || getNumber5() === '' || getNumber6() === '') {
+    return true;
+  } else {
+    return false;
+  }
+}
+function updateLabel() {
+  var addend1 = getNumber1();
+  var addend2 = getNumber2();
+  var addend3 = getNumber3();
+  var addend4 = getNumber4();
+  var addend5 = getNumber5();
+  var addend6 = getNumber6();
+  var a = parseInt(addend4);
+  var b = parseInt(addend5);
+  var c = parseInt(addend6);
+  var x  = a+b+c;
+    if (x < 60) {
+    totalScore = "F";
+    } 
+    else if (x < 70) {
+    totalScore = "D";
+    } 
+    else if (x < 80){
+    totalScore = "C";
+    } 
+    else if (x < 90){
+    totalScore = "B";
+    }
+    else if (x <= 100){
+    totalScore = "A";
+    }
+    else {
+    totalScore = "ข้อมูลคะเเนนไม่ถูกต้อง";
+    }
+  var sum ='[' + 'ชื่อ:' +addend1 + ' ' + addend2 + ' วิชา:' + addend3 + ' คะเเนนรวม:' + x + ' เกรด:' + totalScore+ ']';
+  alert("ข้อมุลถูกนำเข้าเเล้ว");
+  label.textContent = label.textContent  + sum ;
+}
+function getNumber1() {
+  return inputs[0].value;
+}
+function getNumber2() {
+  return inputs[1].value;
+}
+function getNumber3() {
+  return inputs[2].value;
+}
+function getNumber4() {
+  return inputs[3].value;
+}
+function getNumber5() {
+  return inputs[4].value;
+}
+function getNumber6() {
+  return inputs[5].value;
+}       
+var inputs = document.querySelectorAll('input');
+var label = document.querySelector('p');
+var button = document.querySelector('button');
+button.addEventListener('click', onClick);
+
+    </script>
+  </body>
+
+</html>
